@@ -51,7 +51,7 @@ hr:before{content:"···";letter-spacing:14px;color:var(--muted);font-size:22px
 <article>
 <h1>Teaching an AI Video Model My Favorite Lens</h1>
 <p class="sub">A MiniMax H3 LoRA that gives AI video the soft fall-off and night-time bokeh of a Voigtländer Nokton 35mm, trained from 40 old photos on a rented A100 in under ninety minutes.</p>
-<div class="byline"><span><b>Maung Maung Hla Win</b> · October 2026 · 9 min read</span></div>
+<div class="byline"><span><b>Maung Maung Hla Win</b> · October 2026 · 11 min read</span></div>
 
 <figure class="wide">
 <video src="media/before_after_reel.mp4" poster="media/ab_sc_market.jpg" autoplay muted loop playsinline controls></video>
@@ -137,6 +137,42 @@ hr:before{content:"···";letter-spacing:14px;color:var(--muted);font-size:22px
 <h3>Café by the window</h3>
 <figure><video src="media/ab_sc_indoor.mp4" poster="media/ab_sc_indoor.jpg" autoplay muted loop playsinline></video></figure>
 
+<h2>Showcase: six seconds at a time</h2>
+
+<p>For the showcase I went back to Colab and rendered nine six-second shots designed around what a fast 35mm loves: backlight, candles, fairy lights, neon, lanterns, and a rack focus. Each runs at 8 steps with the lightx2v Ref2V turbo LoRA, same character, same seed, with and without <code>nokton35bokeh</code>. The "before" side is what turbo H3 gives you on its own: sharp from edge to edge, saturated, a little too clean.</p>
+
+<h3>Golden-hour backlight</h3>
+<figure><video src="media/show_02_backlit_golden.mp4" poster="media/show_02_backlit_golden.jpg" autoplay muted loop playsinline></video>
+<figcaption>Sun through leaves becomes big soft discs, and the hair gets a rim of light.</figcaption></figure>
+
+<h3>Candlelit dinner</h3>
+<figure><video src="media/show_08_candlelit_dinner.mp4" poster="media/show_08_candlelit_dinner.jpg" autoplay muted loop playsinline></video>
+<figcaption>Foreground candles melt in front of the lens: depth on both sides of the subject.</figcaption></figure>
+
+<h3>Rack focus</h3>
+<figure><video src="media/show_06_rack_focus.mp4" poster="media/show_06_rack_focus.jpg" autoplay muted loop playsinline></video></figure>
+
+<h3>Fairy lights, close</h3>
+<figure><video src="media/show_04_fairy_lights.mp4" poster="media/show_04_fairy_lights.jpg" autoplay muted loop playsinline></video></figure>
+
+<h3>Rainy café window</h3>
+<figure><video src="media/show_03_rain_cafe.mp4" poster="media/show_03_rain_cafe.jpg" autoplay muted loop playsinline></video>
+<figcaption>Traffic lights through wet glass turn into red, teal and amber discs.</figcaption></figure>
+
+<h3>Lantern festival</h3>
+<figure><video src="media/show_05_lantern_walk.mp4" poster="media/show_05_lantern_walk.jpg" autoplay muted loop playsinline></video></figure>
+
+<h3>Neon night walk</h3>
+<figure><video src="media/show_01_night_walk.mp4" poster="media/show_01_night_walk.jpg" autoplay muted loop playsinline></video></figure>
+
+<h3>Subway platform</h3>
+<figure><video src="media/show_07_subway.mp4" poster="media/show_07_subway.jpg" autoplay muted loop playsinline></video></figure>
+
+<h3>Morning curtains</h3>
+<figure><video src="media/show_09_morning_curtains.mp4" poster="media/show_09_morning_curtains.jpg" autoplay muted loop playsinline></video></figure>
+
+<p>One lesson from this round: I first gave the café and lantern shots a sharp background plate from Qwen Image 2.1 as a second reference, to lock the set design. Ref2V faithfully preserved those plates, sharpness and all, and the bokeh mostly disappeared. Describing the same scenes in the prompt alone gave the LoRA room to work, and those are the versions above.</p>
+
 <h2>What it learned, and what it didn't</h2>
 
 <ul>
@@ -145,6 +181,7 @@ hr:before{content:"···";letter-spacing:14px;color:var(--muted);font-size:22px
 <li><b>Identity holds.</b> Faces and wardrobe from the reference survive at every checkpoint.</li>
 <li><b>Daylight is subtler.</b> In bright sun and hard shade the change is real but gentle. That's where most of my training photos were thin.</li>
 <li><b>It darkens a little.</b> Night interiors and golden hour come out about a stop darker. Some of that is the lens; some of it I'd like to train out.</li>
+<li><b>It's not a pure filter.</b> Beyond focus and color, it also nudges composition and setting: the same seed can come out reframed or with a different background. Think of it as "how this lens would have shot it", not a post effect.</li>
 <li><b>Training subjects copy their pose.</b> People from the training set come back in the exact pose of their reference. That's memorization from cutting references out of the same shot. New characters (like the one above) don't do this.</li>
 </ul>
 
@@ -154,7 +191,7 @@ hr:before{content:"···";letter-spacing:14px;color:var(--muted);font-size:22px
 
 <p>The cutout trick works, but it's indirect. The cleanest possible data is the change itself, so next I'm going out with a tripod to shoot <b>pairs</b>: the same frame at f/8 (sharp, flat, closer to a typical AI render) and wide open (the Nokton look), with the exposure matched. About two thirds people at different distances, the rest near subjects in front of busy backgrounds, and a good share in daylight to fix the weak spot. I'll also train in full precision this time.</p>
 
-<p class="note">Made with MiniMax H3 (Ref2VA), Musubi Tuner, Google Colab (A100) via the Colab CLI, ComfyUI on an RTX 3090, and Qwen Image 2.1 for background plates. Training photos are personal and not published here.</p>
+<p class="note">Made with MiniMax H3 (Ref2VA), Musubi Tuner, Google Colab (A100) via the Colab CLI, ComfyUI on an RTX 3090 (lighting tests, Acc-8Step), the lightx2v Ref2V turbo 8-step LoRA (showcase), and Qwen Image 2.1. Training photos are personal and not published here.</p>
 </article>
 </main>
 </body>
