@@ -1,0 +1,9 @@
+[general]
+resolution = [1024, 1024]
+batch_size = 1
+enable_bucket = true
+bucket_no_upscale = true
+
+[[datasets]]
+image_jsonl_file = "/content/nokton/items.jsonl"
+cache_directory = "/content/nokton/cache"

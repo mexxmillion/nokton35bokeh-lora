@@ -15,3 +15,7 @@ Media stays below 25 MiB per file.
 ## Local preview
 
     python -m http.server 8766 --directory site
+
+## Reusable training recipe
+
+The working 35mm settings, prepared 1500-step 50mm recipe, private dataset format, backup procedure, and evaluation checklist are saved in [training/README.md](training/README.md). Personal photos, captions describing them, model weights, credentials, and runtime logs are excluded.

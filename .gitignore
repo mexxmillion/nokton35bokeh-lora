@@ -1,1 +1,13 @@
 .DS_Store
+__pycache__/
+*.pyc
+.env
+training/**/dataset/
+training/**/cache/
+training/**/models/
+training/**/output/
+*.safetensors
+*.zip
+*.tar
+*.tar.gz
+*.log
